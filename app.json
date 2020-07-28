@@ -1,0 +1,12 @@
+{
+  "name": "bhtu-cars",
+  "displayName": "bhtu-cars",
+  "expo": {
+    "name": "bhtu-cars",
+    "slug": "bhtu-cars",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
