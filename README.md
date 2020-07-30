@@ -30,10 +30,17 @@
 - Enter in the aplication with Expo app 
 
   `
-    you can find it on AppStore or on Googleplay
-    https://apps.apple.com/br/app/expo-client/id982107779
-    https://play.google.com/store/apps/details?id=host.exp.exponent
+    You can find it on AppStore or on Googleplay
   `
+
+    <a href="https://apps.apple.com/br/app/expo-client/id982107779">
+      App Store
+    </a>
+    <br>
+    <a href="https://play.google.com/store/apps/details?id=host.exp.exponent">
+      Google play 
+    </a>
+  
 
 
 ## ⚙️ Configuration Files
