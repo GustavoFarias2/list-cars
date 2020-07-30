@@ -25,7 +25,7 @@ const view: React.FC<ListRouteParams> = ({ navigation, route }) => {
   const carsData = useFetch('cars');
 
   const { data, mutate } = useFetch('cars/' + route.params._id);
-  const { _id, brand, title, price, age } = data ? data : route.params;
+  const { brand, title, price, age } = data ? data : route.params;
 
   const [editing, setEditing] = useState(false);
 
@@ -41,9 +41,9 @@ const view: React.FC<ListRouteParams> = ({ navigation, route }) => {
   const handleSubmit = (form) => {
     useValidate(formRef, form, carsData.data, carsData.mutate, () => {
       mutate(form, false);
-      carsData.mutate([...carsData.data.filter((car: Car) => car._id !== _id, []), form], false);
+      carsData.mutate([...carsData.data.filter((car: Car) => car._id !== route.params._id, []), form], false);
 
-      api.put('cars/' + _id, form);
+      api.put('cars/' + route.params._id, form).catch((e) => console.log(e));
       setEditing(false);
     });
   }
@@ -54,9 +54,9 @@ const view: React.FC<ListRouteParams> = ({ navigation, route }) => {
         { text: "Cancel", style: "cancel" },
         {
           text: "OK", onPress: async () => {
-            api.delete('cars/' + _id);
+            api.delete('cars/' + route.params._id);
 
-            carsData.mutate(carsData.data.filter((car: Car) => car._id !== _id));
+            carsData.mutate(carsData.data.filter((car: Car) => car._id !== route.params._id));
             navigation.goBack();
           }
         }
@@ -88,7 +88,7 @@ const view: React.FC<ListRouteParams> = ({ navigation, route }) => {
                 <TextInput name='title' placeholder='Title' />
               </View>
               <View style={{ ...styles.age_input_container, ...{ paddingLeft: 10 } }}>
-                <TextInput name='age' placeholder="Age" />
+                <TextInput name='age' placeholder="Age" type='number' />
               </View>
             </>
           ) : (

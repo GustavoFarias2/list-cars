@@ -8,10 +8,11 @@ import styles from './styles';
 type TextInputProps = {
   name: string,
   customStyle?: {},
+  type?: string,
   props?: any,
 }
 
-const TextInput: React.FC<any | TextInputProps> = ({ name, customStyle, ...props }) => {
+const TextInput: React.FC<any | TextInputProps> = ({ name, customStyle, type, ...props }) => {
 
   const inputRef = useRef<any>(null);
 
@@ -52,7 +53,7 @@ const TextInput: React.FC<any | TextInputProps> = ({ name, customStyle, ...props
         defaultValue={defaultValue}
         keyboardAppearance="dark"
         style={{ ...styles.input, ...customStyle }}
-        onChangeText={(v) => inputRef.current.value = v}
+        onChangeText={(v) => inputRef.current.value = type === 'number' ? Number(v) : v}
         onFocus={clearError}
         {...props}
       />
