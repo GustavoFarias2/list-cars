@@ -9,10 +9,10 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
+    width: '100%',
     backgroundColor: '#fff',
     padding: 5,
     paddingHorizontal: 10,
-    marginHorizontal: 20,
     marginBottom: 14,
     fontSize: 18,
     fontFamily: 'Montserrat_400Regular',

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { ListRouteParams } from '../../routes/list.routes';
 import Car from '../../types/car';
@@ -12,13 +12,7 @@ import CarRow from './carRow/index';
 
 const list: React.FC<ListRouteParams> = ({ navigation }) => {
 
-  let { data, mutate } = useFetch('cars');
-
-  useEffect(() => {
-    // const unsubscribe = navigation.addListener('focus', () => mutate('cars'));
-
-    // return unsubscribe;
-  }, [navigation]);
+  let { data } = useFetch('cars');
 
   if (!data)
     return (

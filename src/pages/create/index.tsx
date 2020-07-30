@@ -6,11 +6,12 @@ import Car from '../../types/car';
 import api from '../../services/api';
 import useFetch from '../../hooks/useFetch';
 
-import * as Yup from 'yup';
+import useValidate from '../../hooks/useValidate';
+
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
 
-import { ScrollView, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from './styles';
 
 import TextInput from '../../components/inputs/text';
@@ -22,57 +23,29 @@ const create: React.FC<AppRouteParamList> = ({ navigation }) => {
 
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = async (form: Car, { reset }) => {
-    try {
-
-      const schema = Yup.object().shape({
-        price: Yup.string().required('The price the car is required to register'),
-        age: Yup.string().required('Please insert the age of the car to continue'),
-        title: Yup.string().required('The Title of the car is required for the register'),
-        brand: Yup.string().required('Please insert the brand to complete the register'),
-      });
-
-      await schema.validate(form, { abortEarly: true });
-
-      api.post('cars', form);
+  const handleSubmit = async (form: Car) => {
+    useValidate(formRef, form, data, mutate, () => {
       mutate([...data, form], false);
-      reset();
+      
+      api.post('cars', form);
       navigation.navigate('ListRoutes');
-
-    } catch (err) {
-      if (err instanceof Yup.ValidationError)
-        formRef.current?.setErrors({ [err.path]: err.message });
-    };
-
+    })
   }
 
   return (
-    <View style={{
-      flex: 1,
-      paddingTop: 60
-    }}>
-      <ScrollView style={{
-        flex: 1
-      }}>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <Text style={styles.label}>Cars's Brand</Text>
-          <TextInput name="brand" />
-          <Text style={styles.label}>Title</Text>
-          <TextInput name="title" />
-          <Text style={styles.label}>Age</Text>
-          <TextInput name="age" type='number' />
-          <Text style={styles.label}>Cars's price</Text>
-          <TextInput name="price" />
-        </Form>
-      </ScrollView>
+    <View style={styles.container}>
+      <Form ref={formRef} onSubmit={handleSubmit}>
+        <Text style={styles.label}>Cars's Brand</Text>
+        <TextInput name="brand" />
+        <Text style={styles.label}>Title</Text>
+        <TextInput name="title" />
+        <Text style={styles.label}>Age</Text>
+        <TextInput name="age" type='number' />
+        <Text style={styles.label}>Cars's price</Text>
+        <TextInput name="price" />
+      </Form>
 
-      <FloatButton
-        action={() => formRef.current.submitForm()}
-        iconStyle={{
-          paddingLeft: 3,
-          paddingTop: 2
-        }}
-      />
+      <FloatButton action={() => formRef.current.submitForm()} iconStyle={styles.icon} />
     </View>
   )
 
