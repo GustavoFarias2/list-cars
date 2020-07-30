@@ -11,7 +11,9 @@ function useFetch<Data = any, Error = any>(url: string) {
     return response.data;
 
   }, {
-    revalidateOnFocus: true
+    revalidateOnFocus: true,
+    revalidateOnMount: true,
+    revalidateOnReconnect: true
   });
 
   return { data, error, mutate };

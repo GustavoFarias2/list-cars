@@ -24,7 +24,9 @@ class ListRoutes extends React.Component {
   render() {
     return (
 
-      <Stack.Navigator screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
+      <Stack.Navigator screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
 
         <Stack.Screen
           name="List"

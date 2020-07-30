@@ -20,20 +20,20 @@ const carRow: React.FC<carRowProps> = ({ navigation, car }) => {
         <Text style={styles.brand}>
           {car.brand}
         </Text>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end' }}>
           <View style={styles.flex}>
             <Text style={styles.title}>
               {car.title}
             </Text>
           </View>
-          <View style={{ flex: 2 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.age}>
               {car.age}
             </Text>
           </View>
           <View style={styles.flex}>
             <Text style={styles.price}>
-              {car.price}
+              {'$' + car.price}
             </Text>
           </View>
         </View>

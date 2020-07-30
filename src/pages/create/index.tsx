@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
 
-import { View, Text } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import styles from './styles';
 
 import TextInput from '../../components/inputs/text';
@@ -35,16 +35,13 @@ const create: React.FC<AppRouteParamList> = ({ navigation }) => {
       await schema.validate(form, { abortEarly: true });
 
       api.post('cars', form);
-      mutate([...data, form]);
+      mutate([...data, form], false);
       reset();
       navigation.navigate('ListRoutes');
 
     } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-
+      if (err instanceof Yup.ValidationError)
         formRef.current?.setErrors({ [err.path]: err.message });
-
-      }
     };
 
   }
@@ -52,21 +49,30 @@ const create: React.FC<AppRouteParamList> = ({ navigation }) => {
   return (
     <View style={{
       flex: 1,
-      padding: 25,
       paddingTop: 60
     }}>
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Text style={styles.label}>Cars's Brand</Text>
-        <TextInput name="brand" />
-        <Text style={styles.label}>Title</Text>
-        <TextInput name="title" />
-        <Text style={styles.label}>Age</Text>
-        <TextInput name="age" />
-        <Text style={styles.label}>Cars's price</Text>
-        <TextInput name="price" />
-      </Form>
+      <ScrollView style={{
+        flex: 1
+      }}>
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Text style={styles.label}>Cars's Brand</Text>
+          <TextInput name="brand" />
+          <Text style={styles.label}>Title</Text>
+          <TextInput name="title" />
+          <Text style={styles.label}>Age</Text>
+          <TextInput name="age" type='number' />
+          <Text style={styles.label}>Cars's price</Text>
+          <TextInput name="price" />
+        </Form>
+      </ScrollView>
 
-      <FloatButton action={() => formRef.current.submitForm()} />
+      <FloatButton
+        action={() => formRef.current.submitForm()}
+        iconStyle={{
+          paddingLeft: 3,
+          paddingTop: 2
+        }}
+      />
     </View>
   )
 

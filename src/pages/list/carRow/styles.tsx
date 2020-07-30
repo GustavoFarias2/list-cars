@@ -12,22 +12,27 @@ const styles = StyleSheet.create({
   },
   brand: {
     color: '#000',
-    fontSize: 22
+    fontSize: 22,
+    fontFamily: 'Montserrat_700Bold',
+    marginBottom: 4
   },
   title: {
     color: '#000',
     fontSize: 22,
+    fontFamily: 'Montserrat_400Regular'
   },
   age: {
     color: '#000',
     fontSize: 22,
-    textAlign: 'left'
+    textAlign: 'left',
+    fontFamily: 'Montserrat_400Regular'
   },
   price: {
     color: '#000',
     fontSize: 22,
     textAlign: 'right',
-    alignSelf: 'flex-end'
+    alignSelf: 'flex-end',
+    fontFamily: 'Montserrat_400Regular'
   }
 });
 

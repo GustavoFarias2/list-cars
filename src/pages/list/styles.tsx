@@ -10,7 +10,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   scroll: {
-    padding: 20
+    flex: 1,
+    padding: 20,
+    paddingBottom: 0
   }
 });
 

@@ -29,7 +29,10 @@ class Routes extends React.Component {
   render() {
     return (
 
-      <Tabs.Navigator>
+      <Tabs.Navigator tabBarOptions={{
+        keyboardHidesTabBar: true,
+        showLabel: false
+      }}>
 
         <Tabs.Screen
           name="ListRoutes"
