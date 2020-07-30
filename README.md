@@ -13,7 +13,7 @@
 - First clone the project
 
   `
-    git clone http://github.com/GustavoFarias2/list-carsa
+    git clone http://github.com/GustavoFarias2/list-cars
   `
 
 - Install dependencies
