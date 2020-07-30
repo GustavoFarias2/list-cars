@@ -33,11 +33,11 @@
     You can find it on AppStore or on Googleplay
   `
 
-    <a href="https://apps.apple.com/br/app/expo-client/id982107779">
+    <a href="https://apps.apple.com/br/app/expo-client/id982107779" target="_blank">
       App Store
     </a>
     <br>
-    <a href="https://play.google.com/store/apps/details?id=host.exp.exponent">
+    <a href="https://play.google.com/store/apps/details?id=host.exp.exponent" target="_blank">
       Google play 
     </a>
   
