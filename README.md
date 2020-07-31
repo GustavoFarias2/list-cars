@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align='center'>
-  A simple aplication to consume an API
+  A simple aplication to consume an API (study content, feel free to copy and share)
 </h3>
 
 ---
